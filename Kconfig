@@ -52,6 +52,20 @@ config ZMK_EDITABLE_MACRO_SETTINGS_IGNORE
       Build with this enabled to start with every slot empty even though macro data is
       still in flash. The stored data is left alone until a slot is saved or cleared.
 
+config ZMK_EDITABLE_MACRO_STUDIO_RPC
+    bool "Read and write macros over the ZMK Studio connection"
+    default y
+    depends on ZMK_STUDIO_RPC
+    help
+      Adds requests to Studio's core subsystem for listing, reading, writing and
+      clearing macros. This needs the zmk-studio-messages fork that defines those
+      requests; with the stock messages, turn this off and the rest of the module
+      still builds.
+
+      CONFIG_ZMK_STUDIO_RPC_RX_BUF_SIZE must be at least 256. ZMK's default of 30
+      is smaller than one macro write request, and ZMK v0.3 drops bytes (USB) or
+      hangs (Bluetooth) when a request does not fit.
+
 # Test support, for the automated tests and first hardware bring-up only. Like the
 # behavior itself it is switched on by devicetree: a `zmk,editable-macro-test` node
 # seeds slots at start-up, and `zmk,behavior-editable-macro-test` adds a test behavior.
@@ -64,5 +78,12 @@ config ZMK_BEHAVIOR_EDITABLE_MACRO_TEST
     bool
     default y
     depends on DT_HAS_ZMK_BEHAVIOR_EDITABLE_MACRO_TEST_ENABLED
+
+# A stand-in Studio transport for tests: feeds request frames listed in the
+# `zmk,editable-macro-test` node to the RPC thread and logs every reply.
+config ZMK_EDITABLE_MACRO_TEST_RPC
+    bool
+    default y
+    depends on ZMK_EDITABLE_MACRO_TEST_SEED && ZMK_STUDIO_RPC
 
 endif

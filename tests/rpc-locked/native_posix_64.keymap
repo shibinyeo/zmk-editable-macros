@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * While Studio is locked, macro contents can be neither read nor changed. Only the
+ * probe is answered. After the unlock key is pressed the same requests work, and the
+ * macro is exactly as it was: the writes attempted while locked did nothing.
+ *
+ * Requests go in every 100 ms. Six arrive while locked; the unlock key goes down at
+ * about t=650 ms; the last two arrive after it.
+ */
+
+#include "../common.dtsi"
+#include "../rpc/studio.dtsi"
+
+/ {
+    emacro_test: emacro_test {
+        compatible = "zmk,editable-macro-test";
+        rpc-frame-interval-ms = <100>;
+
+        abc {
+            slot = <0>;
+            macro-name = "abc";
+            steps = <A B C>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &studio_unlock &none &none>;
+        };
+    };
+};
+
+#include "frames.dtsi"
+
+&kscan {
+    events = <ZMK_MOCK_PRESS(0,1,650) ZMK_MOCK_RELEASE(0,1,300)>;
+};

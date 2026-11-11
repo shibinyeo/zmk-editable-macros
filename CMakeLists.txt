@@ -13,6 +13,12 @@ if(CONFIG_ZMK_BEHAVIOR_EDITABLE_MACRO)
   target_sources_ifdef(CONFIG_SETTINGS app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/em_settings.c)
 
+  target_sources_ifdef(CONFIG_ZMK_EDITABLE_MACRO_STUDIO_RPC app PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/em_rpc.c)
+
+  target_sources_ifdef(CONFIG_ZMK_EDITABLE_MACRO_TEST_RPC app PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/em_test_rpc.c)
+
   target_sources_ifdef(CONFIG_ZMK_EDITABLE_MACRO_TEST_SEED app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/em_test_seed.c)
 

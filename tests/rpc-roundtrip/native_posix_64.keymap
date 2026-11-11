@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * A macro written over the Studio protocol is the macro that plays.
+ *
+ * The requests in frames.dtsi are what Studio would send, byte for byte: ask what the
+ * keyboard supports, write 20 steps in two requests, commit them with a name, then read
+ * everything back. The key press afterwards plays the slot. The steps include the three
+ * keys whose encoding collides with the framing bytes, a key with bit 31 set, and a
+ * consumer key.
+ */
+
+#include "../common.dtsi"
+#include "../rpc/studio.dtsi"
+
+/ {
+    emacro_test: emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        /* Another slot with contents, to show that it is left alone. */
+        other {
+            slot = <5>;
+            steps = <A>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 1 &none &none &none>;
+        };
+    };
+};
+
+#include "frames.dtsi"
+
+/* The ten requests are done by t=220 ms; the press at t=400 ms plays what was written. */
+&kscan {
+    events = <ZMK_MOCK_PRESS(0,0,400) ZMK_MOCK_RELEASE(0,0,400)>;
+};

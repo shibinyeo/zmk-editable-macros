@@ -1,0 +1,173 @@
+emtest: seed slot 5 with 1 steps: status 0
+emtest: request 0, 14 bytes
+emtest: reply, 9 bytes
+emtest:   ab 0a 05 1a 03 ba 06 00 ad
+emtest: request 1, 19 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 01 1a 03 ba 06 00 ad
+emtest: request 2, 25 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 02 1a 03 ba 06 00 ad
+emtest: request 3, 27 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 03 1a 03 ba 06 00 ad
+emtest: request 4, 31 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 04 1a 03 ba 06 00 ad
+emtest: request 5, 36 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 05 1a 03 ba 06 00 ad
+emtest: request 6, 39 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 06 1a 03 ba 06 00 ad
+emtest: request 7, 42 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 07 1a 03 ba 06 00 ad
+emtest: request 8, 48 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 08 1a 03 ba 06 00 ad
+emtest: request 9, 50 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 09 1a 03 ba 06 00 ad
+emtest: request 10, 54 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0a 1a 03 ba 06 00 ad
+emtest: request 11, 56 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0b 1a 03 ba 06 00 ad
+emtest: request 12, 64 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0c 1a 03 ba 06 00 ad
+emtest: request 13, 64 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0d 1a 03 ba 06 00 ad
+emtest: request 14, 68 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0e 1a 03 ba 06 00 ad
+emtest: request 15, 73 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0f 1a 03 ba 06 00 ad
+emtest: request 16, 17 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 10 1a 03 ba 06 00 ad
+emtest: request 17, 21 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 11 1a 03 ba 06 00 ad
+emtest: request 18, 29 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 12 1a 03 ba 06 00 ad
+emtest: request 19, 29 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 13 1a 03 ba 06 00 ad
+emtest: request 20, 32 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 14 1a 03 ba 06 00 ad
+emtest: request 21, 36 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 15 1a 03 ba 06 00 ad
+emtest: request 22, 39 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 16 1a 03 ba 06 00 ad
+emtest: request 23, 44 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 17 1a 03 ba 06 00 ad
+emtest: request 24, 48 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 18 1a 03 ba 06 00 ad
+emtest: request 25, 53 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 19 1a 03 ba 06 00 ad
+emtest: request 26, 55 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 1a 1a 03 ba 06 00 ad
+emtest: request 27, 57 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 1b 1a 03 ba 06 00 ad
+emtest: request 28, 62 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 1c 1a 03 ba 06 00 ad
+emtest: request 29, 68 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 1d 1a 03 ba 06 00 ad
+emtest: request 30, 18 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 1e 1a 03 c2 06 00 ad
+emtest: request 31, 9 bytes
+emtest: reply, 20 bytes
+emtest:   ab 0a 10 08 1f 1a 0c aa 06 09 10 f1 01 1a 04 77 72 61 70 ad
+emtest: request 32, 9 bytes
+emtest: reply, 164 bytes
+emtest:   ab 0a 9f 01 08 20 1a 9a 01 b2 06 96 01 18 84 80 9c 80 08 18 85 80 1c 18
+emtest:   86 80 1c 18 87 80 9c 10 18 88 80 1c 18 89 80 9c 80 08 18 8a 80 9c 10 18
+emtest:   8b 80 1c 18 8c 80 1c 18 8d 80 9c 10 18 8e 80 9c 80 08 18 8f 80 1c 18 90
+emtest:   80 9c 10 18 91 80 1c 18 92 80 1c 18 93 80 9c 80 08 18 94 80 1c 18 95 80
+emtest:   1c 18 96 80 9c 10 18 97 80 1c 18 98 80 9c 80 08 18 99 80 9c 10 18 9a 80
+emtest:   1c 18 9b 80 1c 18 9c 80 9c 10 18 9d 80 9c 80 08 18 9e 80 1c 18 9f 80 9c
+emtest:   10 18 a0 80 1c 18 a1 80 1c 18 a2 80 9c 80 08 18 a3 80 1c ad
+emtest: request 33, 11 bytes
+emtest: reply, 168 bytes
+emtest:   ab 0a a0 01 08 21 1a 9b 01 b2 06 97 01 10 20 18 a4 80 1c 18 a5 80 9c 10
+emtest:   18 a6 80 1c 18 a7 80 9c 80 08 18 a8 80 9c 10 18 a9 80 1c 18 aa 80 1c 18
+emtest:   ac ab 80 9c 10 18 ac ac 80 9c 80 08 18 ac ad 80 1c 18 ae 80 9c 10 18 af
+emtest:   80 1c 18 b0 80 1c 18 b1 80 9c 80 08 18 b2 80 1c 18 b3 80 1c 18 b4 80 9c
+emtest:   10 18 b5 80 1c 18 84 80 9c 80 08 18 85 80 9c 10 18 86 80 1c 18 87 80 1c
+emtest:   18 88 80 9c 10 18 89 80 9c 80 08 18 8a 80 1c 18 8b 80 9c 10 18 8c 80 1c
+emtest:   18 8d 80 1c 18 8e 80 9c 80 08 18 8f 80 1c 18 90 80 1c 18 91 80 9c 10 ad
+emtest: request 34, 11 bytes
+emtest: reply, 169 bytes
+emtest:   ab 0a a1 01 08 22 1a 9c 01 b2 06 98 01 10 40 18 92 80 1c 18 93 80 9c 80
+emtest:   08 18 94 80 9c 10 18 95 80 1c 18 96 80 1c 18 97 80 9c 10 18 98 80 9c 80
+emtest:   08 18 99 80 1c 18 9a 80 9c 10 18 9b 80 1c 18 9c 80 1c 18 9d 80 9c 80 08
+emtest:   18 9e 80 1c 18 9f 80 1c 18 a0 80 9c 10 18 a1 80 1c 18 a2 80 9c 80 08 18
+emtest:   a3 80 9c 10 18 a4 80 1c 18 a5 80 1c 18 a6 80 9c 10 18 a7 80 9c 80 08 18
+emtest:   a8 80 1c 18 a9 80 9c 10 18 aa 80 1c 18 ac ab 80 1c 18 ac ac 80 9c 80 08
+emtest:   18 ac ad 80 1c 18 ae 80 1c 18 af 80 9c 10 18 b0 80 1c 18 b1 80 9c 80 08
+emtest:   ad
+emtest: request 35, 11 bytes
+emtest: reply, 165 bytes
+emtest:   ab 0a a0 01 08 23 1a 9b 01 b2 06 97 01 10 60 18 b2 80 9c 10 18 b3 80 1c
+emtest:   18 b4 80 1c 18 b5 80 9c 10 18 84 80 9c 80 08 18 85 80 1c 18 86 80 9c 10
+emtest:   18 87 80 1c 18 88 80 1c 18 89 80 9c 80 08 18 8a 80 1c 18 8b 80 1c 18 8c
+emtest:   80 9c 10 18 8d 80 1c 18 8e 80 9c 80 08 18 8f 80 9c 10 18 90 80 1c 18 91
+emtest:   80 1c 18 92 80 9c 10 18 93 80 9c 80 08 18 94 80 1c 18 95 80 9c 10 18 96
+emtest:   80 1c 18 97 80 1c 18 98 80 9c 80 08 18 99 80 1c 18 9a 80 1c 18 9b 80 9c
+emtest:   10 18 9c 80 1c 18 9d 80 9c 80 08 18 9e 80 9c 10 18 9f 80 1c ad
+emtest: request 36, 12 bytes
+emtest: reply, 169 bytes
+emtest:   ab 0a a1 01 08 24 1a 9c 01 b2 06 98 01 10 80 01 18 a0 80 1c 18 a1 80 9c
+emtest:   10 18 a2 80 9c 80 08 18 a3 80 1c 18 a4 80 9c 10 18 a5 80 1c 18 a6 80 1c
+emtest:   18 a7 80 9c 80 08 18 a8 80 1c 18 a9 80 1c 18 aa 80 9c 10 18 ac ab 80 1c
+emtest:   18 ac ac 80 9c 80 08 18 ac ad 80 9c 10 18 ae 80 1c 18 af 80 1c 18 b0 80
+emtest:   9c 10 18 b1 80 9c 80 08 18 b2 80 1c 18 b3 80 9c 10 18 b4 80 1c 18 b5 80
+emtest:   1c 18 84 80 9c 80 08 18 85 80 1c 18 86 80 1c 18 87 80 9c 10 18 88 80 1c
+emtest:   18 89 80 9c 80 08 18 8a 80 9c 10 18 8b 80 1c 18 8c 80 1c 18 8d 80 9c 10
+emtest:   ad
+emtest: request 37, 12 bytes
+emtest: reply, 170 bytes
+emtest:   ab 0a a2 01 08 25 1a 9d 01 b2 06 99 01 10 a0 01 18 8e 80 9c 80 08 18 8f
+emtest:   80 1c 18 90 80 9c 10 18 91 80 1c 18 92 80 1c 18 93 80 9c 80 08 18 94 80
+emtest:   1c 18 95 80 1c 18 96 80 9c 10 18 97 80 1c 18 98 80 9c 80 08 18 99 80 9c
+emtest:   10 18 9a 80 1c 18 9b 80 1c 18 9c 80 9c 10 18 9d 80 9c 80 08 18 9e 80 1c
+emtest:   18 9f 80 9c 10 18 a0 80 1c 18 a1 80 1c 18 a2 80 9c 80 08 18 a3 80 1c 18
+emtest:   a4 80 1c 18 a5 80 9c 10 18 a6 80 1c 18 a7 80 9c 80 08 18 a8 80 9c 10 18
+emtest:   a9 80 1c 18 aa 80 1c 18 ac ab 80 9c 10 18 ac ac 80 9c 80 08 18 ac ad 80
+emtest:   1c ad
+emtest: request 38, 12 bytes
+emtest: reply, 166 bytes
+emtest:   ab 0a a1 01 08 26 1a 9c 01 b2 06 98 01 10 c0 01 18 ae 80 9c 10 18 af 80
+emtest:   1c 18 b0 80 1c 18 b1 80 9c 80 08 18 b2 80 1c 18 b3 80 1c 18 b4 80 9c 10
+emtest:   18 b5 80 1c 18 84 80 9c 80 08 18 85 80 9c 10 18 86 80 1c 18 87 80 1c 18
+emtest:   88 80 9c 10 18 89 80 9c 80 08 18 8a 80 1c 18 8b 80 9c 10 18 8c 80 1c 18
+emtest:   8d 80 1c 18 8e 80 9c 80 08 18 8f 80 1c 18 90 80 1c 18 91 80 9c 10 18 92
+emtest:   80 1c 18 93 80 9c 80 08 18 94 80 9c 10 18 95 80 1c 18 96 80 1c 18 97 80
+emtest:   9c 10 18 98 80 9c 80 08 18 99 80 1c 18 9a 80 9c 10 18 9b 80 1c ad
+emtest: request 39, 12 bytes
+emtest: reply, 96 bytes
+emtest:   ab 0a 5a 08 27 1a 56 b2 06 53 10 e0 01 18 9c 80 1c 18 9d 80 9c 80 08 18
+emtest:   9e 80 1c 18 9f 80 1c 18 a0 80 9c 10 18 a1 80 1c 18 a2 80 9c 80 08 18 a3
+emtest:   80 9c 10 18 a4 80 1c 18 a5 80 1c 18 a6 80 9c 10 18 a7 80 9c 80 08 18 a8
+emtest:   80 1c 18 a9 80 9c 10 18 aa 80 1c 18 ac ab 80 1c 18 ac ac 80 9c 80 08 ad
+emtest: request 40, 9 bytes
+emtest: reply, 30 bytes
+emtest:   ab 0a 1a 08 28 1a 16 a2 06 13 08 01 10 10 18 80 04 20 10 28 10 30 20 38
+emtest:   80 10 40 f2 01 ad

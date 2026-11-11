@@ -21,6 +21,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 struct em_slot {
     uint16_t count;
     uint16_t generation;
+    bool named;                     /* false: `name` holds the default "Macro N" */
     char name[EM_NAME_MAX_LEN + 1]; /* display name, always NUL-terminated and non-empty */
     uint32_t steps[EM_MAX_STEPS];
 };
@@ -139,8 +140,10 @@ static void apply_record(uint8_t slot, const struct em_record *rec) {
     if (rec->name_len > 0) {
         memcpy(s->name, rec->name, rec->name_len);
         s->name[rec->name_len] = '\0';
+        s->named = true;
     } else {
         set_default_name(slot);
+        s->named = false;
     }
     s->generation++;
     k_mutex_unlock(&table_lock);
@@ -170,6 +173,13 @@ uint32_t em_store_total_steps(void) {
 const char *em_store_name(uint8_t slot) {
     if (slot >= EM_SLOT_COUNT) {
         return "?";
+    }
+    return slots[slot].name;
+}
+
+const char *em_store_custom_name(uint8_t slot) {
+    if (slot >= EM_SLOT_COUNT || !slots[slot].named) {
+        return "";
     }
     return slots[slot].name;
 }
@@ -370,6 +380,7 @@ void em_store_reset_ram(void) {
     for (uint8_t i = 0; i < EM_SLOT_COUNT; i++) {
         slots[i].count = 0;
         slots[i].generation++;
+        slots[i].named = false;
         set_default_name(i);
     }
     k_mutex_unlock(&table_lock);

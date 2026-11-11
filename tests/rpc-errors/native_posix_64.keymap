@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Requests that must be refused are refused with the right answer, change nothing, and
+ * leave the connection working.
+ *
+ * Covers: clearing a slot, writes and commits that are out of range, out of order or
+ * carry an invalid step or name, slots that do not exist, a request the firmware has no
+ * handler for, and a request too large to decode (which gets no reply at all; the next
+ * request must still be answered). Afterwards slot 0 plays the two steps that were
+ * finally committed and slot 2, which was cleared, plays nothing.
+ */
+
+#include "../common.dtsi"
+#include "../rpc/studio.dtsi"
+
+/ {
+    emacro_test: emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        abc {
+            slot = <2>;
+            macro-name = "abc";
+            steps = <A B C>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &emacro 2 &none &none>;
+        };
+    };
+};
+
+#include "frames.dtsi"
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(0,0,500) ZMK_MOCK_RELEASE(0,0,10)
+        ZMK_MOCK_PRESS(0,1,50) ZMK_MOCK_RELEASE(0,1,100)
+    >;
+};

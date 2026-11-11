@@ -1,0 +1,28 @@
+emtest: seed slot 0 with 3 steps: status 0
+emtest: request 0, 7 bytes
+emtest: reply, 27 bytes
+emtest:   ab 0a 17 1a 15 a2 06 12 08 01 10 10 18 80 04 20 10 28 10 30 20 38 80 10
+emtest:   40 03 ad
+emtest: request 1, 9 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 01 12 02 10 01 ad
+emtest: request 2, 9 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 02 12 02 10 01 ad
+emtest: request 3, 14 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 03 12 02 10 01 ad
+emtest: request 4, 13 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 04 12 02 10 01 ad
+emtest: request 5, 9 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 05 12 02 10 01 ad
+emtest: reply, 8 bytes
+emtest:   ab 12 04 12 02 08 01 ad
+emtest: request 6, 9 bytes
+emtest: reply, 18 bytes
+emtest:   ab 0a 0e 08 06 1a 0a aa 06 07 10 03 1a 03 61 62 63 ad
+emtest: request 7, 9 bytes
+emtest: reply, 23 bytes
+emtest:   ab 0a 13 08 07 1a 0f b2 06 0c 18 84 80 1c 18 85 80 1c 18 86 80 1c ad

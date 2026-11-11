@@ -1,0 +1,40 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * ZMK Studio refuses to build for a keyboard without a physical layout, so the tests
+ * that enable Studio give the 2x2 mock keyboard one.
+ */
+
+#include <physical_layouts.dtsi>
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,physical-layout = &test_layout;
+    };
+
+    test_transform: test_transform {
+        compatible = "zmk,matrix-transform";
+        rows = <2>;
+        columns = <2>;
+        map = <RC(0,0) RC(0,1) RC(1,0) RC(1,1)>;
+    };
+
+    test_layout: test_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Test";
+        transform = <&test_transform>;
+        kscan = <&kscan>;
+
+        keys  //                     w   h    x    y  rot  rx  ry
+            = <&key_physical_attrs 100 100    0    0    0   0   0>
+            , <&key_physical_attrs 100 100  100    0    0   0   0>
+            , <&key_physical_attrs 100 100    0  100    0   0   0>
+            , <&key_physical_attrs 100 100  100  100    0   0   0>
+            ;
+    };
+};

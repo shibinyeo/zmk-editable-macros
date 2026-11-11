@@ -56,6 +56,10 @@ DT_INST_FOREACH_CHILD(0, SEED_ARRAYS)
 
 static const struct em_seed seeds[] = {DT_INST_FOREACH_CHILD(0, SEED_ENTRY)};
 
+#if IS_ENABLED(CONFIG_ZMK_EDITABLE_MACRO_TEST_RPC)
+void em_test_rpc_start(void); /* em_test_rpc.c */
+#endif
+
 /* Deliberately small, so seeding exercises the multi-write path an editor uses. */
 #define SEED_CHUNK 16
 
@@ -103,6 +107,10 @@ static void run_seeds(void) {
         int err = settings_load_subtree("emacro");
         LOG_DBG("emtest: RAM cleared and settings reloaded: result %d", err);
     }
+#endif
+
+#if IS_ENABLED(CONFIG_ZMK_EDITABLE_MACRO_TEST_RPC)
+    em_test_rpc_start();
 #endif
 }
 

@@ -16,6 +16,17 @@ properties:
       After seeding, forget the RAM copy of every slot and load them again from
       settings, to prove that what was stored is what comes back.
 
+  rpc-frames:
+    type: uint8-array
+    description: |
+      Studio request frames, concatenated, each exactly as it would arrive on the wire
+      (0xAB ... 0xAD). After seeding, they are fed to the RPC thread one at a time
+      through a stand-in transport, and every reply is logged in hex.
+  rpc-frame-interval-ms:
+    type: int
+    default: 20
+    description: Time between one request frame and the next.
+
 child-binding:
   description: One slot to fill.
   properties:

@@ -88,6 +88,12 @@ uint32_t em_store_total_steps(void);
  */
 const char *em_store_name(uint8_t slot);
 
+/**
+ * The name stored for @p slot, or "" if it has none (em_store_name() then says
+ * "Macro N"). Same lifetime as em_store_name().
+ */
+const char *em_store_custom_name(uint8_t slot);
+
 /** Changes every time the contents of @p slot change. Lets a reader detect an edit. */
 uint16_t em_store_generation(uint8_t slot);
 

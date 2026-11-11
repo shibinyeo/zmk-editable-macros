@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * A long macro survives the trip through the firmware's receive buffer.
+ *
+ * 241 steps are written in 30 requests of 1 to 16 steps. Together the requests are
+ * several times the size of the 256-byte receive buffer, so they wrap around its end at
+ * many different offsets. The macro is then read back in full; the reply bytes in the
+ * snapshot are the steps that were sent.
+ */
+
+#include "../common.dtsi"
+#include "../rpc/studio.dtsi"
+
+/ {
+    emacro_test: emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        other {
+            slot = <5>;
+            steps = <A>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &none &none &none>;
+        };
+    };
+};
+
+#include "frames.dtsi"
+
+/* 41 requests, one every 21 ms, are done by about t=870 ms. The key only keeps the
+ * simulated keyboard running until then. */
+&kscan {
+    events = <ZMK_MOCK_PRESS(0,1,1000) ZMK_MOCK_RELEASE(0,1,10)>;
+};

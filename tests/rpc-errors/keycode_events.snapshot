@@ -1,0 +1,65 @@
+emtest: seed slot 2 with 3 steps: status 0
+emtest: request 0, 9 bytes
+emtest: reply, 9 bytes
+emtest:   ab 0a 05 1a 03 ca 06 00 ad
+emtest: request 1, 11 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 01 1a 05 aa 06 02 08 02 ad
+emtest: request 2, 16 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 02 1a 05 ba 06 02 08 01 ad
+emtest: request 3, 16 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 03 1a 05 ba 06 02 08 02 ad
+emtest: request 4, 17 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 04 1a 03 ba 06 00 ad
+emtest: request 5, 16 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 05 1a 05 ba 06 02 08 04 ad
+emtest: request 6, 13 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 06 1a 05 c2 06 02 08 02 ad
+emtest: request 7, 16 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 07 1a 05 c2 06 02 08 05 ad
+emtest: request 8, 14 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 08 1a 05 c2 06 02 08 05 ad
+emtest: request 9, 13 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 09 1a 05 c2 06 02 08 01 ad
+emtest: request 10, 11 bytes
+emtest: reply, 13 bytes
+emtest:   ab 0a 09 08 0a 1a 05 ca 06 02 08 01 ad
+emtest: request 11, 11 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 0b 12 02 10 00 ad
+emtest: request 12, 11 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 0c 12 02 10 00 ad
+emtest: request 13, 9 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0d 1a 03 aa 06 00 ad
+emtest: request 14, 15 bytes
+emtest: reply, 11 bytes
+emtest:   ab 0a 07 08 0e 1a 03 c2 06 00 ad
+emtest: request 15, 9 bytes
+emtest: reply, 17 bytes
+emtest:   ab 0a 0d 08 0f 1a 09 aa 06 06 10 02 1a 02 6f 6b ad
+emtest: request 16, 9 bytes
+emtest: reply, 10 bytes
+emtest:   ab 0a 06 08 10 12 02 10 02 ad
+emtest: request 17, 62 bytes
+emtest: request 18, 9 bytes
+emtest: reply, 29 bytes
+emtest:   ab 0a 19 08 12 1a 15 a2 06 12 08 01 10 10 18 80 04 20 10 28 10 30 20 38
+emtest:   80 10 40 02 ad
+emacro: slot 0 start, 2 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 done, 2 taps
+emacro: slot 2 start, 0 steps
+emacro: slot 2 done, 0 taps
