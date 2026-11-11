@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/* The same key three times in a row comes out as three separate taps. */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        aaa {
+            slot = <0>;
+            steps = <A A A>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &none &none &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,100)>;
+};

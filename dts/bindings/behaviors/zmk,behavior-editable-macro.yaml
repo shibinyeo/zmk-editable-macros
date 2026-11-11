@@ -1,0 +1,22 @@
+# Copyright (c) 2026 The zmk-editable-macros contributors
+# SPDX-License-Identifier: MIT
+
+description: |
+  Macro whose key sequence is stored on the keyboard and edited at runtime.
+  The single binding parameter is the slot number, e.g. `&emacro 0`.
+
+compatible: "zmk,behavior-editable-macro"
+
+include: one_param.yaml
+
+properties:
+  tap-ms:
+    type: int
+    description: |
+      How long each key is held, in milliseconds.
+      Defaults to CONFIG_ZMK_MACRO_DEFAULT_TAP_MS, the same default stock macros use.
+  wait-ms:
+    type: int
+    description: |
+      Pause after each key is released, in milliseconds.
+      Defaults to CONFIG_ZMK_MACRO_DEFAULT_WAIT_MS, the same default stock macros use.

@@ -1,0 +1,10 @@
+emtest: seed slot 0 with 2 steps: status 0
+emtest: RAM cleared and settings reloaded: result 0
+emtest: slot 0 holds 0 steps, named 'Macro 1'
+emtest: slot 1 holds 0 steps, named 'Macro 2'
+emtest: slot 2 holds 0 steps, named 'Macro 3'
+emtest: 0 steps in total
+emacro: slot 0 start, 0 steps
+emacro: slot 0 done, 0 taps
+kp_pressed: usage_page 0x07 keycode 0x1D implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x1D implicit_mods 0x00 explicit_mods 0x00

@@ -1,0 +1,113 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Damaged or foreign data in the settings partition never becomes a macro and never
+ * stops the keyboard. Records are written byte-for-byte, bypassing every check, then
+ * settings are loaded as at power-up.
+ *
+ * Two of the records are valid and written by hand, which also pins down the stored
+ * format: version, name length, step count (16-bit little-endian), 16 name bytes, then
+ * 32-bit little-endian steps. 0x00070004 is the key A and 0x00070005 is B.
+ *
+ * Built with an 8-step limit so a record that is too large for a slot is easy to make.
+ */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+        reload;
+
+        valid_named {
+            slot = <0>;
+            raw = [01 02 01 00  6f 6b 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+                   04 00 07 00];
+        };
+
+        wrong_version {
+            slot = <1>;
+            raw = [02 00 01 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+                   04 00 07 00];
+        };
+
+        count_disagrees_with_length {
+            slot = <2>;
+            raw = [01 00 02 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+                   04 00 07 00];
+        };
+
+        step_is_not_a_key {
+            slot = <3>;
+            raw = [01 00 01 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+                   30 00 01 00];
+        };
+
+        shorter_than_a_header {
+            slot = <4>;
+            raw = [01 00 00 00 00];
+        };
+
+        name_length_too_big {
+            slot = <5>;
+            raw = [01 11 00 00  41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41];
+        };
+
+        more_steps_than_a_slot_holds {
+            slot = <6>;
+            raw = [01 00 09 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+                   04 00 07 00  04 00 07 00  04 00 07 00  04 00 07 00  04 00 07 00
+                   04 00 07 00  04 00 07 00  04 00 07 00  04 00 07 00];
+        };
+
+        control_character_in_name {
+            slot = <7>;
+            raw = [01 01 00 00  0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00];
+        };
+
+        valid_unnamed {
+            slot = <8>;
+            raw = [01 00 02 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+                   04 00 07 00  05 00 07 00];
+        };
+
+        slot_is_not_a_number {
+            slot = <0>;
+            raw-key = "emacro/s/zz";
+            raw = [01 00 00 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00];
+        };
+
+        slot_does_not_exist {
+            slot = <0>;
+            raw-key = "emacro/s/200";
+            raw = [01 00 00 00  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00];
+        };
+
+        unknown_key {
+            slot = <0>;
+            raw-key = "emacro/something_else";
+            raw = [ff ff ff ff];
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &emacro 8 &emtest 3 &emacro 1>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(1,0,10) ZMK_MOCK_RELEASE(1,0,10)
+        ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,50)
+        ZMK_MOCK_PRESS(0,1,10) ZMK_MOCK_RELEASE(0,1,50)
+        ZMK_MOCK_PRESS(1,1,10) ZMK_MOCK_RELEASE(1,1,50)
+    >;
+};

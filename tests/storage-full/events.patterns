@@ -1,0 +1,2 @@
+s/.*emacro: /emacro: /p
+s/.*emtest: /emtest: /p

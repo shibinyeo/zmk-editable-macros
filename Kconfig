@@ -1,0 +1,68 @@
+# Copyright (c) 2026 The zmk-editable-macros contributors
+# SPDX-License-Identifier: MIT
+
+# Built only when the keymap includes <behaviors/editable_macro.dtsi>, and only on the
+# device that runs the keymap (a non-split keyboard, or the split central). Leave the
+# include out and nothing from this module is compiled.
+config ZMK_BEHAVIOR_EDITABLE_MACRO
+    bool
+    default y
+    depends on DT_HAS_ZMK_BEHAVIOR_EDITABLE_MACRO_ENABLED
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+
+if ZMK_BEHAVIOR_EDITABLE_MACRO
+
+config ZMK_EDITABLE_MACRO_SLOTS
+    int "Number of editable macro slots"
+    default 16
+    range 1 32
+
+config ZMK_EDITABLE_MACRO_MAX_STEPS
+    int "Maximum key taps in one macro"
+    default 512
+    range 1 1000
+    help
+      Each step is one key tap and uses 4 bytes of RAM per slot. A stored macro is one
+      settings value of 20 + 4 * steps bytes, which has to stay under the NVS limit of
+      about 4000 bytes; hence the upper bound.
+
+config ZMK_EDITABLE_MACRO_TOTAL_STEPS
+    int "Maximum key taps stored across all macros"
+    default 2048
+    help
+      Caps how much of the shared settings partition macros can use (4 bytes per step).
+      The partition also holds Bluetooth bonds and ZMK Studio keymap changes.
+
+config ZMK_EDITABLE_MACRO_STORAGE_RESERVE
+    int "Bytes of settings storage that macros must leave free"
+    default 4096
+    depends on SETTINGS_NVS
+    help
+      A save is refused if it would leave less than this much free space, so that
+      macros can never prevent a Bluetooth bond or a keymap change from being saved.
+
+config ZMK_EDITABLE_MACRO_QUEUE_SIZE
+    int "Macros that can wait behind the one that is playing"
+    default 4
+    range 1 16
+
+config ZMK_EDITABLE_MACRO_SETTINGS_IGNORE
+    bool "Recovery: do not load stored macros at boot"
+    help
+      Build with this enabled to start with every slot empty even though macro data is
+      still in flash. The stored data is left alone until a slot is saved or cleared.
+
+# Test support, for the automated tests and first hardware bring-up only. Like the
+# behavior itself it is switched on by devicetree: a `zmk,editable-macro-test` node
+# seeds slots at start-up, and `zmk,behavior-editable-macro-test` adds a test behavior.
+config ZMK_EDITABLE_MACRO_TEST_SEED
+    bool
+    default y
+    depends on DT_HAS_ZMK_EDITABLE_MACRO_TEST_ENABLED
+
+config ZMK_BEHAVIOR_EDITABLE_MACRO_TEST
+    bool
+    default y
+    depends on DT_HAS_ZMK_BEHAVIOR_EDITABLE_MACRO_TEST_ENABLED
+
+endif

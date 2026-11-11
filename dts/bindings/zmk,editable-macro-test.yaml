@@ -1,0 +1,39 @@
+# Copyright (c) 2026 The zmk-editable-macros contributors
+# SPDX-License-Identifier: MIT
+
+description: |
+  Test support for editable macros: fills slots when the firmware starts.
+  Used by the automated tests and for first hardware bring-up, before any
+  editor exists. Not meant for a keyboard in normal use, because the seeded
+  slots are rewritten on every boot.
+
+compatible: "zmk,editable-macro-test"
+
+properties:
+  reload:
+    type: boolean
+    description: |
+      After seeding, forget the RAM copy of every slot and load them again from
+      settings, to prove that what was stored is what comes back.
+
+child-binding:
+  description: One slot to fill.
+  properties:
+    slot:
+      type: int
+      required: true
+    macro-name:
+      type: string
+    steps:
+      type: array
+      description: |
+        Key taps, written like `&kp` parameters, e.g. <A LS(B) N1>. Committed
+        through the same stage-then-commit path an editor uses.
+    raw:
+      type: uint8-array
+      description: |
+        Bytes stored verbatim as the slot's settings value, bypassing every check.
+        For testing how damaged records are handled.
+    raw-key:
+      type: string
+      description: Full settings key to store `raw` under, instead of the slot's own key.

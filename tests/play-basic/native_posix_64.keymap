@@ -1,0 +1,40 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * A macro plays its steps in order, as taps, with implicit modifiers applied to the
+ * key they belong to and released with it. The empty slot next to it does nothing.
+ */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        hello {
+            slot = <0>;
+            macro-name = "hello";
+            steps = <A LS(B) LC(LA(C)) N1 C_VOL_UP>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &emacro 1 &emtest 3 &kp Z>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(1,0,10) ZMK_MOCK_RELEASE(1,0,10)
+        ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,100)
+        ZMK_MOCK_PRESS(0,1,10) ZMK_MOCK_RELEASE(0,1,50)
+    >;
+};

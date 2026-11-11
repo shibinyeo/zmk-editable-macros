@@ -1,0 +1,23 @@
+emtest: seed slot 0 with 3 steps: status 0
+emtest: seed slot 2 with 2 steps: status 0
+emacro: slot 2 loaded, 2 steps
+emacro: slot 0 loaded, 3 steps
+emtest: RAM cleared and settings reloaded: result 0
+emtest: slot 0 holds 3 steps, named 'hello'
+emtest: slot 1 holds 0 steps, named 'Macro 2'
+emtest: slot 2 holds 2 steps, named 'Macro 3'
+emtest: 5 steps in total
+emacro: slot 0 start, 3 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x05 implicit_mods 0x02 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x05 implicit_mods 0x02 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x06 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x06 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 done, 3 taps
+emacro: slot 2 start, 2 steps
+kp_pressed: usage_page 0x07 keycode 0x1B implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x1B implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x0C keycode 0xE2 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x0C keycode 0xE2 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 2 done, 2 taps

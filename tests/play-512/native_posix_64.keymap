@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * A macro at the default maximum length (512 steps) plays every step, in order.
+ * This is the case stock macros cannot do: their shared queue holds 64 items, two per
+ * tap. Only the presses are in the snapshot, to keep it to one line per step.
+ */
+
+#include "../common.dtsi"
+
+#define ROW_A A B C D E F G H
+#define ROW_B I J K L M N O P
+#define ROW_C Q R S T U V W X
+#define ROW_D Y Z N1 N2 N3 N4 N5 N6
+#define ROW_E N7 N8 N9 N0 MINUS EQUAL LBKT RBKT
+#define ROW_F SEMI SQT GRAVE COMMA DOT FSLH BSLH SPACE
+#define ROW_G LS(A) LS(B) LS(C) LS(D) LS(E) LS(F) LS(G) LS(H)
+#define ROW_H LS(I) LS(J) LS(K) LS(L) LS(M) LS(N) LS(O) LS(P)
+#define STEPS_64 ROW_A ROW_B ROW_C ROW_D ROW_E ROW_F ROW_G ROW_H
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        long_macro {
+            slot = <0>;
+            steps = <STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &none &none &none>;
+        };
+    };
+};
+
+/*
+ * Kernel timeouts round up by one tick, which is 1 ms on native_posix, so each step
+ * takes 3 ms + 4 ms here and 512 of them take about 3.6 s.
+ */
+&kscan {
+    events = <ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,5000)>;
+};

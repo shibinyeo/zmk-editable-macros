@@ -1,0 +1,20 @@
+emtest: seed slot 0 with 512 steps: status 0
+emtest: seed slot 1 with 512 steps: status 0
+emtest: seed slot 2 with 512 steps: status 0
+emacro: 5972 bytes free in settings, 6193 needed
+emacro: slot 3 not saved (-28)
+emtest: seed slot 3 with 512 steps: status 6
+emacro: 5972 bytes free in settings, 6193 needed
+emacro: slot 4 not saved (-28)
+emtest: seed slot 4 with 512 steps: status 6
+emtest: seed slot 5 with 3 steps: status 0
+emacro: slot 5 loaded, 3 steps
+emacro: slot 2 loaded, 512 steps
+emacro: slot 1 loaded, 512 steps
+emacro: slot 0 loaded, 512 steps
+emtest: RAM cleared and settings reloaded: result 0
+emtest: slot 0 holds 512 steps, named 'Macro 1'
+emtest: slot 1 holds 512 steps, named 'Macro 2'
+emtest: slot 2 holds 512 steps, named 'Macro 3'
+emtest: slot 5 holds 3 steps, named 'small'
+emtest: 1539 steps in total

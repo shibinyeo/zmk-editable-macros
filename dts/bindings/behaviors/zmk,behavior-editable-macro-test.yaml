@@ -1,0 +1,11 @@
+# Copyright (c) 2026 The zmk-editable-macros contributors
+# SPDX-License-Identifier: MIT
+
+description: |
+  Test-only behavior that performs a store operation when its key is pressed, so
+  automated tests can edit macros in the middle of a key sequence.
+  The parameter selects the action; see src/behavior_editable_macro_test.c.
+
+compatible: "zmk,behavior-editable-macro-test"
+
+include: one_param.yaml

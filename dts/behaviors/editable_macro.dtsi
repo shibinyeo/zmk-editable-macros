@@ -1,0 +1,28 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Include this from a keymap to get `&emacro <slot>`:
+ *
+ *     #include <behaviors/editable_macro.dtsi>
+ *
+ *     &emacro {
+ *         tap-ms = <5>;
+ *         wait-ms = <5>;
+ *     };
+ *
+ * Including it is what switches the feature on; without it nothing is built.
+ */
+
+/ {
+    behaviors {
+        emacro: editable_macro {
+            compatible = "zmk,behavior-editable-macro";
+            #binding-cells = <1>;
+            display-name = "Editable Macro";
+        };
+    };
+};

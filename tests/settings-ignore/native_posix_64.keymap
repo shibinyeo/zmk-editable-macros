@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * The recovery build (CONFIG_ZMK_EDITABLE_MACRO_SETTINGS_IGNORE=y) starts with every
+ * slot empty even though macro data is stored: after the save and reload, slot 0 holds
+ * nothing and its key does nothing.
+ */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+        reload;
+
+        stored {
+            slot = <0>;
+            macro-name = "stored";
+            steps = <A B>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &kp Z &emtest 3 &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(1,0,10) ZMK_MOCK_RELEASE(1,0,10)
+        ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,50)
+        ZMK_MOCK_PRESS(0,1,10) ZMK_MOCK_RELEASE(0,1,50)
+    >;
+};

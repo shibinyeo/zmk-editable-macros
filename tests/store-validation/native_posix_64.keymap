@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Every kind of invalid write and commit is rejected with the right status, and none of
+ * them changes what the slots hold: slot 0 still plays A B C afterwards and slot 1 is
+ * still empty. Built with tiny limits (8 steps per macro, 4 in total) so the length and
+ * budget checks can be reached.
+ *
+ * Status codes: 1 invalid slot, 2 bad sequence, 3 too long, 4 invalid step,
+ * 5 invalid name, 6 no space.
+ */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        abc {
+            slot = <0>;
+            steps = <A B C>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            /* &emtest 1 runs the list of invalid operations. */
+            bindings = <&emacro 0 &emacro 1 &emtest 1 &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(1,0,10) ZMK_MOCK_RELEASE(1,0,10)
+        ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,50)
+        ZMK_MOCK_PRESS(0,1,10) ZMK_MOCK_RELEASE(0,1,50)
+    >;
+};

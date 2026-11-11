@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Saving a slot while it is playing stops the playback cleanly: the key that is down is
+ * released, nothing from the new contents is spliced on, and the next press plays the
+ * new macro.
+ *
+ * Timing (20 ms waits are 21 ms, see cancel-repress): A is held during t=2-23, B during
+ * 44-65 and C during 86-107. The save lands at t=96, in the middle of C. So the
+ * snapshot must show C released, "stopped after 3 taps", no D, and then X Y on the
+ * next press.
+ */
+
+#include "../common.dtsi"
+
+&emacro {
+    tap-ms = <20>;
+    wait-ms = <20>;
+};
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        eight {
+            slot = <0>;
+            steps = <A B C D E F G H>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            /* &emtest 0 replaces slot 0 with X Y, named "alt". */
+            bindings = <&emacro 0 &emtest 3 &emtest 0 &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(0,0,1) ZMK_MOCK_RELEASE(0,0,91)
+        ZMK_MOCK_PRESS(1,0,1) ZMK_MOCK_RELEASE(1,0,100)
+        ZMK_MOCK_PRESS(0,1,1) ZMK_MOCK_RELEASE(0,1,10)
+        ZMK_MOCK_PRESS(0,0,1) ZMK_MOCK_RELEASE(0,0,300)
+    >;
+};

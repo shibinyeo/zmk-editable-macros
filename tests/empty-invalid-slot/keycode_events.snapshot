@@ -1,0 +1,10 @@
+emtest: seed slot 0 with 1 steps: status 0
+emacro: slot 5 start, 0 steps
+emacro: slot 5 done, 0 taps
+emacro: slot 99 does not exist (16 slots)
+kp_pressed: usage_page 0x07 keycode 0x1D implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x1D implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 start, 1 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 done, 1 taps

@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * What is saved is what comes back. Two slots are committed (which writes them to the
+ * settings partition), the RAM copy is wiped, and settings are loaded again, as happens
+ * at power-up. The slots then report and play their original contents and names.
+ */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+        reload;
+
+        hello {
+            slot = <0>;
+            macro-name = "hello";
+            steps = <A LS(B) C>;
+        };
+
+        unnamed {
+            slot = <2>;
+            steps = <X C_MUTE>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &emacro 2 &emtest 3 &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(1,0,10) ZMK_MOCK_RELEASE(1,0,10)
+        ZMK_MOCK_PRESS(0,0,10) ZMK_MOCK_RELEASE(0,0,50)
+        ZMK_MOCK_PRESS(0,1,10) ZMK_MOCK_RELEASE(0,1,50)
+    >;
+};

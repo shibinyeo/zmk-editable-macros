@@ -1,0 +1,34 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Shared by every test. The mock keyboard is 2x2, so key positions are:
+ *
+ *     (row 0, col 0) = position 0     (row 0, col 1) = position 1
+ *     (row 1, col 0) = position 2     (row 1, col 1) = position 3
+ *
+ * Each test supplies its own keymap, seeded slots and scripted key events.
+ */
+
+#include <dt-bindings/zmk/keys.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/kscan_mock.h>
+#include <behaviors/editable_macro.dtsi>
+
+/* Short, unequal timings: tests run quickly and the two delays stay distinguishable. */
+&emacro {
+    tap-ms = <2>;
+    wait-ms = <3>;
+};
+
+/ {
+    behaviors {
+        emtest: editable_macro_test_action {
+            compatible = "zmk,behavior-editable-macro-test";
+            #binding-cells = <1>;
+        };
+    };
+};

@@ -1,0 +1,21 @@
+emtest: seed slot 0 with 8 steps: status 0
+emacro: slot 0 start, 8 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x06 implicit_mods 0x00 explicit_mods 0x00
+emtest: stage alt: status 0
+emtest: commit alt: status 0
+kp_released: usage_page 0x07 keycode 0x06 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 changed during playback, stopped after 3 taps
+emtest: slot 0 holds 2 steps, named 'alt'
+emtest: slot 1 holds 0 steps, named 'Macro 2'
+emtest: slot 2 holds 0 steps, named 'Macro 3'
+emtest: 2 steps in total
+emacro: slot 0 start, 2 steps
+kp_pressed: usage_page 0x07 keycode 0x1B implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x1B implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x1C implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x1C implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 done, 2 taps

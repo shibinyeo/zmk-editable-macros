@@ -1,0 +1,71 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Macros cannot fill the settings partition. Full-length macros are saved one after
+ * another until one is refused with "no space" (status 6); a small macro saved after
+ * that still fits, because the refusal keeps a reserve free. After a reload, exactly
+ * the macros whose save succeeded are present and the refused slots are empty.
+ *
+ * The simulated settings partition is 16 KB, half the keyboard's 32 KB. The step
+ * budget is raised here so the storage check, not the budget, is what refuses.
+ */
+
+#include "../common.dtsi"
+
+#define ROW_A A B C D E F G H
+#define STEPS_64 ROW_A ROW_A ROW_A ROW_A ROW_A ROW_A ROW_A ROW_A
+#define STEPS_512 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64 STEPS_64
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+        reload;
+
+        big0 {
+            slot = <0>;
+            steps = <STEPS_512>;
+        };
+
+        big1 {
+            slot = <1>;
+            steps = <STEPS_512>;
+        };
+
+        big2 {
+            slot = <2>;
+            steps = <STEPS_512>;
+        };
+
+        big3 {
+            slot = <3>;
+            steps = <STEPS_512>;
+        };
+
+        big4 {
+            slot = <4>;
+            steps = <STEPS_512>;
+        };
+
+        small {
+            slot = <5>;
+            macro-name = "small";
+            steps = <X Y Z>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emtest 3 &none &none &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <ZMK_MOCK_PRESS(0,0,100) ZMK_MOCK_RELEASE(0,0,100)>;
+};

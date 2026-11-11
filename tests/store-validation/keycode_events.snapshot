@@ -1,0 +1,29 @@
+emtest: seed slot 0 with 3 steps: status 0
+emtest: write to a slot that does not exist: status 1
+emtest: write at offset 5 with nothing staged: status 2
+emtest: start a sequence in slot 1: status 0
+emtest: write that leaves a gap: status 2
+emtest: continue the sequence from another slot: status 2
+emtest: write a step on an unsupported HID page: status 4
+emtest: write a step with usage id 0: status 4
+emtest: write past the per-macro limit: status 3
+emtest: commit with the wrong step count: status 2
+emtest: commit steps to a slot with nothing staged: status 2
+emtest: commit with a 17-byte name: status 5
+emtest: commit with a control character in the name: status 5
+emtest: commit over the total budget: status 6
+emtest: clear a slot that does not exist: status 1
+emtest: slot 0 holds 3 steps, named 'Macro 1'
+emtest: slot 1 holds 0 steps, named 'Macro 2'
+emtest: slot 2 holds 0 steps, named 'Macro 3'
+emtest: 3 steps in total
+emacro: slot 0 start, 3 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x06 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x06 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 done, 3 taps
+emacro: slot 1 start, 0 steps
+emacro: slot 1 done, 0 taps

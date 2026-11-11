@@ -1,0 +1,49 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Pressing a macro's key again while it plays stops it, and the key that was down at
+ * that moment is released. Afterwards the same key plays the macro from the start.
+ *
+ * Timing (kernel timeouts round up one 1 ms tick, so 20 ms waits are 21 ms): the macro
+ * starts at t=2 and holds A during 2-23, B during 44-65 and C during 86-107. The second
+ * press arrives at t=96, in the middle of C. So the snapshot must show C pressed and
+ * released, "cancelled after 3 taps", and no D.
+ */
+
+#include "../common.dtsi"
+
+&emacro {
+    tap-ms = <20>;
+    wait-ms = <20>;
+};
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        eight {
+            slot = <0>;
+            steps = <A B C D E F G H>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &none &none &none>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(0,0,1) ZMK_MOCK_RELEASE(0,0,91)
+        ZMK_MOCK_PRESS(0,0,1) ZMK_MOCK_RELEASE(0,0,300)
+        ZMK_MOCK_PRESS(0,0,1) ZMK_MOCK_RELEASE(0,0,500)
+    >;
+};

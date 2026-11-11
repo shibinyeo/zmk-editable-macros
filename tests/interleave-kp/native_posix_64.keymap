@@ -1,0 +1,38 @@
+/*
+ * Copyright (c) 2026 The zmk-editable-macros contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Typing a normal key while a macro plays: both reach the host, and every press has
+ * its release. (Z goes down at t=8, between the macro's B and C, and up at t=12.)
+ */
+
+#include "../common.dtsi"
+
+/ {
+    emacro_test {
+        compatible = "zmk,editable-macro-test";
+
+        four {
+            slot = <0>;
+            steps = <A B C D>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <&emacro 0 &none &none &kp Z>;
+        };
+    };
+};
+
+&kscan {
+    events = <
+        ZMK_MOCK_PRESS(0,0,1) ZMK_MOCK_RELEASE(0,0,6)
+        ZMK_MOCK_PRESS(1,1,4) ZMK_MOCK_RELEASE(1,1,100)
+    >;
+};

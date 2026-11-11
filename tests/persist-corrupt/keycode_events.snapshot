@@ -1,0 +1,41 @@
+emtest: stored 24 raw bytes at emacro/s/0: result 0
+emtest: stored 24 raw bytes at emacro/s/1: result 0
+emtest: stored 24 raw bytes at emacro/s/2: result 0
+emtest: stored 24 raw bytes at emacro/s/3: result 0
+emtest: stored 5 raw bytes at emacro/s/4: result 0
+emtest: stored 20 raw bytes at emacro/s/5: result 0
+emtest: stored 56 raw bytes at emacro/s/6: result 0
+emtest: stored 20 raw bytes at emacro/s/7: result 0
+emtest: stored 28 raw bytes at emacro/s/8: result 0
+emtest: stored 20 raw bytes at emacro/s/zz: result 0
+emtest: stored 20 raw bytes at emacro/s/200: result 0
+emtest: stored 4 raw bytes at emacro/something_else: result 0
+emacro: ignoring stored macro for slot 200 (only 16 slots)
+emacro: ignoring stored key with bad slot 'zz'
+emacro: slot 8 loaded, 2 steps
+emacro: ignoring stored macro 7, it does not validate
+emacro: ignoring stored macro 6 with impossible size 56
+emacro: ignoring stored macro 5, it does not validate
+emacro: ignoring stored macro 4 with impossible size 5
+emacro: ignoring stored macro 3, it does not validate
+emacro: ignoring stored macro 2, it does not validate
+emacro: ignoring stored macro 1, it does not validate
+emacro: slot 0 loaded, 1 steps
+emtest: RAM cleared and settings reloaded: result 0
+emtest: slot 0 holds 1 steps, named 'ok'
+emtest: slot 1 holds 0 steps, named 'Macro 2'
+emtest: slot 2 holds 0 steps, named 'Macro 3'
+emtest: slot 8 holds 2 steps, named 'Macro 9'
+emtest: 3 steps in total
+emacro: slot 0 start, 1 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 0 done, 1 taps
+emacro: slot 8 start, 2 steps
+kp_pressed: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
+kp_pressed: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+kp_released: usage_page 0x07 keycode 0x05 implicit_mods 0x00 explicit_mods 0x00
+emacro: slot 8 done, 2 taps
+emacro: slot 1 start, 0 steps
+emacro: slot 1 done, 0 taps
