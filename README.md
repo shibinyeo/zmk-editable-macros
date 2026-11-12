@@ -2,7 +2,7 @@
 
 A ZMK module that adds macros whose key sequences are stored on the keyboard and can be changed without rebuilding or reflashing firmware. ZMK itself is not modified.
 
-**Status: playback, storage and the Studio protocol work and are tested. There is no editor inside ZMK Studio yet.** Until there is, macros are read and written with a small terminal client that speaks the same protocol.
+**Status: in use on a TOTEM split keyboard.** Playback, storage and the Studio protocol are tested on a PC and on the keyboard. Macros are edited with a copy of ZMK Studio that has a macro editor added, or with a small terminal client; both speak the protocol described below. Stock ZMK Studio keeps working with firmware that includes this module, it just does not show the macros' contents.
 
 Built and tested against ZMK v0.3.0 (`edf5c0814f`).
 
@@ -22,7 +22,35 @@ With the defaults the module uses about 36 KB of RAM and 3 KB of flash on an nRF
 
 ## Using it
 
-Make the module available to the build (as a west project, or with `-DZMK_EXTRA_MODULES=<path>`), then in the keymap:
+Make the module available to the build, either with `-DZMK_EXTRA_MODULES=<path>` or as a west project in the config's `west.yml`:
+
+```yaml
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: shibinyeo
+      url-base: https://github.com/shibinyeo
+  projects:
+    - name: zmk-editable-macros
+      remote: shibinyeo
+      revision: <commit>
+      path: modules/zmk-editable-macros
+    # Only for editing over the Studio connection, see below. Same name and path as
+    # the project ZMK's own manifest lists, so it replaces that one.
+    - name: zmk-studio-messages
+      remote: shibinyeo
+      revision: <commit>
+      path: modules/msgs/zmk-studio-messages
+    - name: zmk
+      remote: zmkfirmware
+      revision: <ZMK commit>
+      import: app/west.yml
+  self:
+    path: config
+```
+
+Then in the keymap:
 
 ```dts
 #include <behaviors/editable_macro.dtsi>
@@ -50,7 +78,7 @@ Including the `.dtsi` is what turns the feature on. Without it nothing from this
 
 When the firmware is built with ZMK Studio, the module adds six requests to Studio's `core` subsystem for listing, reading, writing and clearing macros. Two things are needed for that:
 
-- **The `zmk-studio-messages` fork** that defines the requests, in place of the stock one. In a west manifest, list a `zmk-studio-messages` project before `zmk` so it takes precedence. To build with the stock messages instead, set `CONFIG_ZMK_EDITABLE_MACRO_STUDIO_RPC=n`; playback still works.
+- **The `zmk-studio-messages` fork** that defines the requests, in place of the stock one, as in the manifest above. To build with the stock messages instead, set `CONFIG_ZMK_EDITABLE_MACRO_STUDIO_RPC=n`; playback still works.
 - **`CONFIG_ZMK_STUDIO_RPC_RX_BUF_SIZE=256`** on the device that runs Studio. ZMK's default is 30 bytes, smaller than a macro write, and ZMK v0.3 drops bytes (USB) or hangs (Bluetooth) when a request does not fit. The build fails with a message if this is missing.
 
 Reading or changing macros needs Studio unlocked, like changing the keymap. Only the request that reports what the keyboard supports is answered while locked.
